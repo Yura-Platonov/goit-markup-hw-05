@@ -2,7 +2,9 @@
     --primary-text-color:#757575;
     --primary-title-color: #212121;
     --accent-color: #2196f3;
-    --primary-white-color: #fff;}
+    --primary-white-color: #fff;
+    --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1)
+}
 
     .visually-hidden {
         position: absolute;
@@ -92,15 +94,36 @@ body{
 }
 
 .main-nav-link {
-    display: block;
-    padding-top: 32px;
+    position: relative;
+        padding-top: 32px;
     padding-bottom: 32px;
-
+    
     color: var(--primary-title-color);
     font-weight: 500;
 font-size: 14px;
 line-height: 1.14;
 letter-spacing: 0.02em;}
+
+.main-nav-link::after{
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    transform: scaleX(0);
+    transition: transform 250ms var(--cubic-bezier);
+
+    
+    width: 100%;
+    height: 4px;
+
+    background-color: #2196F3;
+border-radius: 2px;
+}
+
+.main-nav-link:hover::after{
+    transform: scaleX(1);
+
+}
 
 .flex .logo-header{
     padding: 24px 0 25px 0;
@@ -110,7 +133,14 @@ letter-spacing: 0.02em;}
 color: var(--accent-color);}
 
 .link-current {
-    color: var(--accent-color);}
+    color: var(--accent-color);
+    
+}
+
+.link-current::after {
+    transform: scaleX(1);
+        
+}
 
 
 .auth-nav-link {
@@ -529,11 +559,36 @@ color: var(--primary-title-color);}
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 
-.text{
-    color: var(--primary-text-color);
-    font-size: 16px;
-    line-height: 1.9;
+
+.overlay-galary-picture {
+    position: relative;
+    overflow: hidden;
+    
 }
+.overlay-galary-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    padding: 63px 24px;
+
+    background-color: rgba(33, 150, 243, 0.9);
+    
+}
+
+.galary-list-link:hover .overlay-galary-text, .galary-list-link:focus .overlay-galary-text {
+    transform: translateY(-100%);
+    
+    }
+
+.text{
+    color: var(--primary-white-color);
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+
 
 .footer {
     background-color: #2f303a;
